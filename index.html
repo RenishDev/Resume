@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renish Amipara - Laravel Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        bod
+        
+         y {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2942&q=80') fixed;
+            background-size: cover;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 30, 48, 0.95) 0%, rgba(36, 59, 85, 0.9) 100%);
+            z-index: -1;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        }
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .cosmic-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .animated-gradient {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        .shadow-glow {
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        }
+        .drop-shadow-glow {
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+        }
+        .animate-float {
+            animation: floating 3s ease-in-out infinite;
+        }
+        .animate-float-reverse {
+            animation: floating 3.5s ease-in-out infinite reverse;
+        }
+        .animate-float-slow {
+            animation: floating 6s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        .animate-spin-slow-reverse {
+            animation: spin 10s linear infinite reverse;
+        }
+        .animate-ping-slow {
+            animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .animate-orbit {
+            animation: orbit 12s linear infinite;
+        }
+        .animate-orbit-reverse {
+            animation: orbit 15s linear infinite reverse;
+        }
+        .animate-tilt {
+            animation: tilt 10s infinite linear;
+        }
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        @keyframes orbit {
+            from {
+                transform: rotate(0deg) translateX(50px) rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg) translateX(50px) rotate(-360deg);
+            }
+        }
+        @keyframes tilt {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .rotate-y-12 {
+            transform: rotateY(12deg);
+        }
+        .animation-delay-700 {
+            animation-delay: 0.7s;
+        }
+        .animation-delay-1000 {
+            animation-delay: 1s;
+        }
+        .animation-delay-1500 {
+            animation-delay: 1.5s;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Particles Background -->
+    <div class="cosmic-particles" id="particles"></div>
+
+    <!-- Animated Gradient Orbs -->
+    <div class="fixed w-96 h-96 rounded-full animated-gradient blur-3xl opacity-10 top-20 -left-48 animate-float-slow"></div>
+    <div class="fixed w-80 h-80 rounded-full animated-gradient blur-3xl opacity-10 bottom-20 -right-40 animate-float-reverse"></div>
+    <div class="fixed w-64 h-64 rounded-full animated-gradient blur-3xl opacity-10 top-1/2 left-1/3 animate-pulse-slow"></div>
+
+    <!-- Navbar -->
+    <nav class="glass-card fixed w-full z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-indigo-400">Renish<span class="text-white">Amipara</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-indigo-400 transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-indigo-400 transition">About</a>
+                    <a href="#experience" class="text-gray-300 hover:text-indigo-400 transition">Experience</a>
+                    <a href="#projects" class="text-gray-300 hover:text-indigo-400 transition">Projects</a>
+                    <a href="#skills" class="text-gray-300 hover:text-indigo-400 transition">Skills</a>
+                    <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 hover:bg-white/5 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 hover:bg-white/5 rounded-md">About</a>
+                <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 hover:bg-white/5 rounded-md">Experience</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 hover:bg-white/5 rounded-md">Projects</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 hover:bg-white/5 rounded-md">Skills</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 hover:bg-white/5 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <!-- Content Side -->
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0 text-white">
+                    <!-- Neon status badge -->
+                    <div class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 glass-card rounded-full mb-4 sm:mb-6 shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 transform hover:scale-105">
+                        <span class="relative flex h-2 sm:h-3 w-2 sm:w-3 mr-1.5 sm:mr-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 sm:h-3 w-2 sm:w-3 bg-indigo-500"></span>
+                        </span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 font-medium text-xs sm:text-sm tracking-wide">Available for Elite Projects</span>
+                    </div>
+                    
+                    <!-- Cyberpunk-inspired headline -->
+                    <div class="relative mb-4 sm:mb-6">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-2 leading-tight">
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-fuchsia-400">DIGITAL</span>
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-400 to-indigo-400">ARCHITECT</span>
+                        </h1>
+                        <div class="absolute -left-2 sm:-left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-purple-500"></div>
+                        <div class="absolute -bottom-2 left-0 w-3/4 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                    </div>
+                    
+                    <!-- Futuristic name display -->
+                    <div class="mb-4 sm:mb-6 inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 glass-card border-l-2 border-purple-500">
+                        <h2 class="text-xl sm:text-2xl font-bold">
+                            <span class="text-gray-300">RENISH</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">AMIPARA</span>
+                        </h2>
+                    </div>
+                    
+                    <!-- Holographic skill chips -->
+                    <div class="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
+                        <span class="px-3 sm:px-4 py-1.5 sm:py-2 glass-card rounded-md text-indigo-400 text-sm sm:text-base font-medium shadow-lg shadow-indigo-500/10 transform hover:-translate-y-1 hover:shadow-indigo-500/30 transition-all duration-300">Laravel Specialist</span>
+                        <span class="px-3 sm:px-4 py-1.5 sm:py-2 glass-card rounded-md text-purple-400 text-sm sm:text-base font-medium shadow-lg shadow-purple-500/10 transform hover:-translate-y-1 hover:shadow-purple-500/30 transition-all duration-300">API Architect</span>
+                        <span class="px-3 sm:px-4 py-1.5 sm:py-2 glass-card rounded-md text-fuchsia-400 text-sm sm:text-base font-medium shadow-lg shadow-fuchsia-500/10 transform hover:-translate-y-1 hover:shadow-fuchsia-500/30 transition-all duration-300">Full Stack Developer</span>
+                    </div>
+                    
+                    <!-- Futuristic description -->
+                    <p class="text-gray-300 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed font-light max-w-lg">
+                        Creating <span class="text-indigo-400 font-medium">next-generation</span> digital experiences where <span class="text-purple-400 font-medium">code meets creativity</span>. Transforming complex challenges into <span class="text-fuchsia-400 font-medium">elegant solutions</span> that push technological boundaries.
+                    </p>
+                    
+                    <!-- Neon-styled CTA buttons -->
+                    <div class="flex flex-wrap gap-3 sm:gap-4">
+                        <a href="#contact" class="group relative inline-flex items-center px-4 sm:px-8 py-2 sm:py-4 glass-card border border-indigo-500 text-indigo-400 text-sm sm:text-base font-medium rounded-md overflow-hidden shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300">
+                            <span class="absolute inset-0 bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-all duration-300"></span>
+                            <span class="absolute inset-0 w-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 transition-all duration-500 ease-out group-hover:w-full"></span>
+                            <span class="relative z-10 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                Initiate Project
+                            </span>
+                        </a>
+                        <a href="#projects" class="group relative inline-flex items-center px-4 sm:px-8 py-2 sm:py-4 glass-card border border-purple-500 text-purple-400 text-sm sm:text-base font-medium rounded-md overflow-hidden shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300">
+                            <span class="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-all duration-300"></span>
+                            <span class="absolute inset-0 w-0 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 transition-all duration-500 ease-out group-hover:w-full"></span>
+                            <span class="relative z-10 flex items-center">
+                                Explore Work
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-1.5 sm:ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Visual Side - Futuristic 3D Profile -->
+                <div class="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0">
+                    <div class="relative group">
+                        <!-- Holographic container -->
+                        <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full perspective-1000">
+                            <!-- Animated rings -->
+                            <div class="absolute inset-0 rounded-full border-2 border-indigo-500/50 animate-spin-slow"></div>
+                            <div class="absolute inset-4 rounded-full border-2 border-purple-500/50 animate-spin-slow-reverse"></div>
+                            <div class="absolute inset-8 rounded-full border-2 border-fuchsia-500/50 animate-spin-slow"></div>
+                            
+                            <!-- Glowing orb background -->
+                            <div class="absolute inset-12 rounded-full glass-card shadow-2xl shadow-purple-500/30 overflow-hidden">
+                                <!-- Animated grid pattern -->
+                                <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(99,102,241,0.4) 1px, transparent 1px); background-size: 10px 10px;"></div>
+                                
+                                <!-- Glowing edges -->
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/10"></div>
+                                
+                                <!-- Profile image with futuristic frame -->
+                                <div class="absolute inset-4 rounded-full overflow-hidden border-2 border-indigo-500/50 p-1">
+                                    <div class="w-full h-full rounded-full overflow-hidden">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/055/332/908/small_2x/3d-icon-avatar-cartoon-happy-man-with-glasses-is-smiling-and-wearing-a-white-sweater-on-cutout-transparent-background-png.png" alt="Renish Amipara" class="object-cover w-full h-full transform transition-transform duration-700 ease-out group-hover:scale-110">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating tech elements with creative positioning -->
+                            <div class="absolute -top-6 right-0 px-3 py-1.5 glass-card border border-indigo-500/50 rounded-md text-xs font-mono text-indigo-400 shadow-lg shadow-indigo-500/20 transform rotate-12 animate-float hidden sm:block">
+                                &lt;DevWizard/&gt;
+                            </div>
+                            <div class="absolute -bottom-4 left-0 px-3 py-1.5 glass-card border border-purple-500/50 rounded-md text-xs font-mono text-purple-400 shadow-lg shadow-purple-500/20 transform -rotate-6 animate-float-reverse hidden sm:block">
+                                async_master()
+                            </div>
+                            <div class="absolute top-1/3 -right-12 px-3 py-1.5 glass-card border border-fuchsia-500/50 rounded-md text-xs font-mono text-fuchsia-400 shadow-lg shadow-fuchsia-500/20 transform rotate-3 animate-float hidden sm:block">
+                                {CodeArtist}
+                            </div>
+                            
+                            <!-- Floating skill indicators with enhanced styling -->
+                            <div class="absolute -right-16 top-10 px-3 py-2 glass-card border-l-4 border-indigo-500/50 rounded-r-xl text-xs font-medium text-indigo-400 shadow-lg shadow-indigo-500/20 transform transition-all duration-500 group-hover:translate-x-2 hidden sm:flex">
+                                <span class="flex items-center">
+                                    <span class="w-2 h-2 bg-indigo-500 rounded-full mr-2 animate-pulse"></span>
+                                    Laravel Master
+                                </span>
+                            </div>
+                            <div class="absolute -left-16 top-1/2 px-3 py-2 glass-card border-r-4 border-purple-500/50 rounded-l-xl text-xs font-medium text-purple-400 shadow-lg shadow-purple-500/20 transform transition-all duration-500 group-hover:-translate-x-2 hidden sm:flex">
+                                <span class="flex items-center">
+                                    <span class="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-pulse"></span>
+                                    Full Stack Ninja
+                                </span>
+                            </div>
+                            <div class="absolute bottom-10 -right-20 px-3 py-2 glass-card border-t-4 border-fuchsia-500/50 rounded-b-xl text-xs font-medium text-fuchsia-400 shadow-lg shadow-fuchsia-500/20 transform transition-all duration-500 group-hover:translate-y-2 hidden sm:flex">
+                                <span class="flex items-center">
+                                    <span class="w-2 h-2 bg-fuchsia-500 rounded-full mr-2 animate-pulse"></span>
+                                    API Architect
+                                </span>
+                            </div>
+                            
+                            <!-- Enhanced orbiting particles -->
+                            <div class="absolute h-4 w-4 rounded-full bg-indigo-500/80 top-5 right-5 animate-orbit shadow-lg shadow-indigo-500/50"></div>
+                            <div class="absolute h-3 w-3 rounded-full bg-purple-500/80 bottom-8 left-8 animate-orbit-reverse animation-delay-2000 shadow-lg shadow-purple-500/50"></div>
+                            <div class="absolute h-2 w-2 rounded-full bg-fuchsia-500/80 top-2/3 right-1/3 animate-ping-slow animation-delay-1000 shadow-md shadow-fuchsia-500/50"></div>
+                        </div>
+                        
+                        <!-- Enhanced radial glow effect -->
+                        <div class="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-fuchsia-500/20 blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-700"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative overflow-hidden text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 relative">
+                <div class="inline-block relative">
+                    <span class="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 rounded-lg blur opacity-30 animate-pulse-slow"></span>
+                    <span class="relative inline-block px-4 py-1 glass-card rounded-full text-sm font-bold text-indigo-300 tracking-wider uppercase border border-indigo-500/30">Discover</span>
+                </div>
+                <h2 class="text-5xl font-extrabold mt-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-fuchsia-400 drop-shadow-glow">About Me</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-fuchsia-600 mx-auto mt-6 mb-8 rounded-full shadow-glow"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Image with 3D effect -->
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <div class="relative group perspective-1000">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 rounded-xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                        <div class="relative h-full overflow-hidden rounded-xl transform transition-all duration-700 group-hover:rotate-y-12">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <img src="https://crestcoder.com/images/Services/laravel_dev.png" alt="About Renish" class="rounded-xl shadow-2xl w-full object-cover transform transition-all duration-700 group-hover:scale-110">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                                <div class="transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                    <span class="text-lg font-bold text-white">Laravel Developer</span>
+                                    <p class="text-indigo-200 text-sm mt-2">Crafting digital experiences with code</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating badges -->
+                        <div class="absolute -top-4 -right-4 px-3 py-1.5 glass-card border border-indigo-500/50 rounded-lg text-xs font-mono text-indigo-300 shadow-glow transform rotate-6 animate-float">
+                            &lt;/&gt; Code Artist
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 px-3 py-1.5 glass-card border border-purple-500/50 rounded-lg text-xs font-mono text-purple-300 shadow-glow transform -rotate-3 animate-float-reverse">
+                            function master() {}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content with glass morphism -->
+                <div class="md:w-1/2">
+                    <div class="relative p-8 rounded-2xl glass-card shadow-2xl">
+                        <!-- Glowing accent -->
+                        <div class="absolute -left-3 top-1/2 w-1.5 h-32 bg-gradient-to-b from-indigo-500 via-purple-500 to-fuchsia-500 rounded-full transform -translate-y-1/2 shadow-glow"></div>
+                        
+                        <div class="space-y-6">
+                            <p class="text-gray-300 leading-relaxed text-lg">
+                                I am a <span class="font-semibold text-indigo-300">skilled Laravel Developer</span> with a strong foundation in building and maintaining scalable web applications. My expertise includes Laravel, PHP, MySQL, and frontend technologies such as Vue.js and JavaScript.
+                            </p>
+                            
+                            <p class="text-gray-300 leading-relaxed text-lg">
+                                I excel in <span class="font-semibold text-purple-300">API integration and optimizing application performance</span>, with notable accomplishments in diverse projects including a truck booking system and a salon management platform.
+                            </p>
+                            
+                            <p class="text-gray-300 leading-relaxed text-lg">
+                                Currently, I am pursuing a <span class="font-semibold text-fuchsia-300">Master's in Computer Application</span> at Parul University, enriching my technical skills further while working as a Laravel Developer at WizNext Software Solution.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                                <div class="bg-white/10 backdrop-blur-sm p-5 rounded-xl border border-white/10 shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 transform hover:-translate-y-1 hover:bg-white/15">
+                                    <h3 class="text-lg font-bold text-indigo-300 mb-3 flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>
+                                        Education
+                                    </h3>
+                                    <p class="text-gray-300">MCA, Parul University</p>
+                                    <p class="text-gray-300">BCA, Uka Tarsadia University</p>
+                                </div>
+                                
+                                <div class="bg-white/10 backdrop-blur-sm p-5 rounded-xl border border-white/10 shadow-xl hover:shadow-purple-500/20 transition-all duration-300 transform hover:-translate-y-1 hover:bg-white/15">
+                                    <h3 class="text-lg font-bold text-purple-300 mb-3 flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        Location
+                                    </h3>
+                                    <p class="text-gray-300">Surat, Gujarat, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <a href="#contact" class="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-xl transition-all duration-500">
+                                    <span class="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 opacity-70 group-hover:opacity-100 transition-opacity duration-500 shadow-xl"></span>
+                                    <span class="absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition-all duration-700 origin-bottom-left transform rotate-45 translate-x-24 bg-white opacity-10 group-hover:rotate-90 ease"></span>
+                                    <span class="relative flex items-center font-medium text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                        Download Resume
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating particles -->
+        <div class="absolute top-1/4 left-10 w-3 h-3 rounded-full bg-indigo-500 animate-float opacity-70"></div>
+        <div class="absolute top-3/4 right-10 w-2 h-2 rounded-full bg-purple-500 animate-float-reverse opacity-70"></div>
+        <div class="absolute top-1/2 left-1/2 w-4 h-4 rounded-full bg-fuchsia-500 animate-ping-slow opacity-70"></div>
+    </section>
+
+    <!-- Experience Journey Section -->
+    <section id="experience" class="py-24 relative overflow-hidden bg-[#0F172A]">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute w-full h-full">
+                <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+                <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+                <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center space-x-2 mb-4">
+                    <span class="h-px w-8 bg-gradient-to-r from-purple-400 to-pink-400"></span>
+                    <span class="text-purple-400 font-mono">EXPERIENCE</span>
+                    <span class="h-px w-8 bg-gradient-to-r from-pink-400 to-purple-400"></span>
+                </div>
+                <h2 class="text-6xl font-bold text-white mb-6 font-display">My Journey</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Crafting digital experiences and solving complex challenges</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <!-- Senior Laravel Developer Card -->
+                <div class="group">
+                    <div class="relative p-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl">
+                        <div class="relative bg-[#1E293B] p-8 rounded-xl h-full transform transition duration-500 group-hover:-translate-y-2">
+                            <div class="absolute -top-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            </div>
+
+                            <span class="text-purple-400 font-mono text-sm">Apr 2024 - Present</span>
+                            <h3 class="text-2xl font-bold text-white mt-2 mb-4">Senior Laravel Developer</h3>
+                            <p class="text-gray-400 mb-6">WizNext Software Solutions • Surat</p>
+
+                            <div class="space-y-4 text-gray-300 mb-8">
+                                <p class="flex items-center">
+                                    <span class="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                                    Led development of scalable web applications and RESTful APIs
+                                </p>
+                                <p class="flex items-center">
+                                    <span class="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                                    Architected custom CMS and e-commerce solutions
+                                </p>
+                                <p class="flex items-center">
+                                    <span class="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                                    Implemented CI/CD pipelines and mentored junior devs
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full text-sm">Laravel</span>
+                                <span class="px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full text-sm">Vue.js</span>
+                                <span class="px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full text-sm">API</span>
+                                <span class="px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full text-sm">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Android Developer Card -->
+                <div class="group">
+                    <div class="relative p-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl">
+                        <div class="relative bg-[#1E293B] p-8 rounded-xl h-full transform transition duration-500 group-hover:-translate-y-2">
+                            <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pink-500 to-purple-500 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+
+                            <span class="text-pink-400 font-mono text-sm">Dec 2023 - Jul 2024</span>
+                            <h3 class="text-2xl font-bold text-white mt-2 mb-4">Android Developer</h3>
+                            <p class="text-gray-400 mb-6">Logycraft Infotech • Surat</p>
+
+                            <div class="space-y-4 text-gray-300 mb-8">
+                                <p class="flex items-center">
+                                    <span class="w-2 h-2 bg-pink-400 rounded-full mr-3"></span>
+                                    Developed StyleCraft salon management app
+                                </p>
+                                <p class="flex items-center">
+                                    <span class="w-2 h-2 bg-pink-400 rounded-full mr-3"></span>
+                                    Implemented real-time data sync with backend
+                                </p>
+                                <p class="flex items-center">
+                                    <span class="w-2 h-2 bg-pink-400 rounded-full mr-3"></span>
+                                    Created intuitive UI/UX flows
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-pink-400/10 text-pink-400 rounded-full text-sm">Android</span>
+                                <span class="px-3 py-1 bg-pink-400/10 text-pink-400 rounded-full text-sm">Firebase</span>
+                                <span class="px-3 py-1 bg-pink-400/10 text-pink-400 rounded-full text-sm">Java</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium transform transition-all duration-500 hover:scale-105 hover:shadow-lg">
+                    <span>View Full Timeline</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Featured Projects</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mt-4 mb-8"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-truck text-6xl text-indigo-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Truck Booking System</h3>
+                            <span class="text-sm text-gray-500">01/2024 - 06/2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Uka Tarsadia University</p>
+                        <p class="text-gray-700 mb-4">A comprehensive truck booking and tracking system.</p>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-6">
+                            <li>Developed an advanced digital platform allowing customers to access various details regarding truck transport.</li>
+                            <li>Provided a user-friendly booking facility for transportation services with a comprehensive registration process for customers and transporters.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Laravel</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">MySQL</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-cut text-6xl text-indigo-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">StyleCraft Application</h3>
+                            <span class="text-sm text-gray-500">12/2023 - 05/2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Logycraft InfoTech</p>
+                        <p class="text-gray-700 mb-4">A salon management platform that enhances user and admin interactions.</p>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-6">
+                            <li>Created a platform that facilitates user registration, secure login, and profile management for salon management.</li>
+                            <li>Enabled customers to book appointments, view salon details, and interact with salon owners through an Android application.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Laravel</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Android</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-comments text-6xl text-indigo-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">ChatWithAnyScientificDocument</h3>
+                            <span class="text-sm text-gray-500">04/2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Nirma Hackthon</p>
+                        <p class="text-gray-700 mb-4">Chat interface for scientific document interaction.</p>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-6">
+                            <li>Developed a unique solution enabling users to interact with various types of scientific documents.</li>
+                            <li>Supported multiple document formats and utilized Google Gemini API for enhanced information extraction.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">API</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Skills & Expertise</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mt-4 mb-8"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-laravel text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">Laravel</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-php text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">PHP</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fas fa-database text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">MySQL</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-js text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">JavaScript</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-vuejs text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">Vue.js</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-html5 text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">HTML5</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-css3-alt text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">CSS</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-bootstrap text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">Bootstrap</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-git-alt text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">Git</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-github text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">GitHub</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fab fa-android text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">Android</p>
+                    </div>
+                    <div class="skill-badge bg-white p-4 rounded-lg shadow-md text-center">
+                        <i class="fas fa-exchange-alt text-3xl text-indigo-600 mb-2"></i>
+                        <p class="font-medium">API Integration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Key Achievements</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mt-4 mb-8"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-tachometer-alt text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Performance Optimization</h3>
+                    <p class="text-gray-700">Increased web application speed by 40% using advanced optimization techniques.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-code-branch text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">API Integration</h3>
+                    <p class="text-gray-700">Successfully integrated multiple third-party APIs for enhanced functionality in applications.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-graduation-cap text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Continuous Learning</h3>
+                    <p class="text-gray-700">Pursuing MCA while working as a Laravel Developer to enhance technical expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Education</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto mt-4 mb-8"></div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative pl-8 mb-12 border-l-2 border-indigo-200">
+                    <div class="absolute top-0 left-0 w-6 h-6 bg-indigo-600 rounded-full -ml-3"></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Master of Computer Application</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-indigo-600 font-medium">Parul University</span>
+                                <span class="mx-2 text-gray-400">|</span>
+                                <span class="text-gray-600">Gujarat</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 mb-4">08/2023 - 06/2026</p>
+                        <p class="text-gray-700">Currently pursuing MCA to enhance technical knowledge and skills.</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 border-l-2 border-indigo-200">
+                    <div class="absolute top-0 left-0 w-6 h-6 bg-indigo-600 rounded-full -ml-3"></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Bachelor of Computer Application</h3>
+                            <div class="flex items-center mt-2 md:mt-0">
+                                <span class="text-indigo-600 font-medium">Uka Tarsadia University</span>
+                                <span class="mx-2 text-gray-400">|</span>
+                                <span class="text-gray-600">Bardoli, Gujarat</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 mb-4">08/2021 - 06/2024</p>
+                        <p class="text-gray-700">Completed BCA with focus on programming and web development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg relative overflow-hidden">
+        <!-- Cosmic Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 rounded-full border-4 border-white animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-48 h-48 rounded-full border-4 border-white animate-ping" style="animation-duration: 8s"></div>
+            <div class="absolute top-1/2 left-1/3 w-24 h-24 rounded-full border-2 border-white animate-bounce" style="animation-duration: 6s"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Let's Create <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-indigo-300">Magic</span> Together</h2>
+                <div class="w-24 h-1 bg-white mx-auto mt-4 mb-8 rounded-full"></div>
+                <p class="text-white text-opacity-90 max-w-2xl mx-auto text-lg">Every great collaboration begins with a simple hello. Ready to turn ideas into reality?</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                    <!-- Digital Handshake Card -->
+                    <div class="lg:col-span-2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-white border-opacity-20 text-white transform hover:scale-105 transition duration-500 hover:rotate-1">
+                        <h3 class="text-2xl font-bold mb-8 inline-block pb-2 border-b-2 border-indigo-300">Digital Handshake</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-center transform hover:translate-x-2 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                                    <i class="fas fa-envelope text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm uppercase tracking-wider text-indigo-200 font-medium">Inbox</h4>
+                                    <a href="mailto:ramipara2004@gmail.com" class="text-white hover:text-indigo-200 transition">ramipara2004@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center transform hover:translate-x-2 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                                    <i class="fas fa-phone text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm uppercase tracking-wider text-indigo-200 font-medium">Ring Me</h4>
+                                    <a href="tel:+919510106511" class="text-white hover:text-indigo-200 transition">+91 9510106511</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center transform hover:translate-x-2 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                                    <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm uppercase tracking-wider text-indigo-200 font-medium">Home Base</h4>
+                                    <p class="text-white">Surat, Gujarat, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-xl font-semibold mb-6 text-white">My Digital Universe</h4>
+                            <div class="flex space-x-5">
+                                <a href="https://github.com/renishamipara" target="_blank" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-30 transition duration-300 group hover:rotate-12">
+                                    <i class="fab fa-github text-white group-hover:scale-125 transition-transform"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/renish-amipara" target="_blank" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-30 transition duration-300 group hover:rotate-12">
+                                    <i class="fab fa-linkedin-in text-white group-hover:scale-125 transition-transform"></i>
+                                </a>
+                                <a href="https://twitter.com/renishamipara" target="_blank" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-30 transition duration-300 group hover:rotate-12">
+                                    <i class="fab fa-twitter text-white group-hover:scale-125 transition-transform"></i>
+                                </a>
+                                <a href="https://instagram.com/renish_amipara" target="_blank" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-30 transition duration-300 group hover:rotate-12">
+                                    <i class="fab fa-instagram text-white group-hover:scale-125 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message Spacecraft Card -->
+                    <div class="lg:col-span-3 bg-white rounded-3xl shadow-2xl p-8 transform hover:shadow-3xl transition duration-500 relative overflow-hidden group">
+                        <div class="absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="absolute -left-20 -bottom-20 w-40 h-40 bg-gradient-to-tr from-pink-200 to-indigo-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 relative">Launch a Message My Way</h3>
+                        
+                        <form action="#" method="POST" class="space-y-6 relative">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="text" id="name" name="name" class="peer w-full px-4 py-3 border-b-2 border-gray-300 focus:border-indigo-500 outline-none bg-transparent transition-colors" placeholder=" " required>
+                                    <label for="name" class="absolute left-4 -top-2.5 text-sm text-gray-600 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-indigo-600">Your Stellar Name</label>
+                                </div>
+                                
+                                <div class="relative">
+                                    <input type="email" id="email" name="email" class="peer w-full px-4 py-3 border-b-2 border-gray-300 focus:border-indigo-500 outline-none bg-transparent transition-colors" placeholder=" " required>
+                                    <label for="email" class="absolute left-4 -top-2.5 text-sm text-gray-600 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-indigo-600">Your Digital Address</label>
+                                </div>
+                            </div>
+                            
+                            <div class="relative">
+                                <input type="text" id="subject" name="subject" class="peer w-full px-4 py-3 border-b-2 border-gray-300 focus:border-indigo-500 outline-none bg-transparent transition-colors" placeholder=" " required>
+                                <label for="subject" class="absolute left-4 -top-2.5 text-sm text-gray-600 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-indigo-600">The Mission Title</label>
+                            </div>
+                            
+                            <div class="relative">
+                                <textarea id="message" name="message" rows="5" class="peer w-full px-4 py-3 border-b-2 border-gray-300 focus:border-indigo-500 outline-none bg-transparent transition-colors resize-none" placeholder=" " required></textarea>
+                                <label for="message" class="absolute left-4 -top-2.5 text-sm text-gray-600 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-indigo-600">Your Cosmic Message</label>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-full hover:from-indigo-700 hover:to-purple-700 transition duration-300 font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 relative overflow-hidden group">
+                                    <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                                    <span class="flex items-center justify-center relative">
+                                        <span>Beam It Up</span>
+                                        <i class="fas fa-rocket ml-2 transform group-hover:rotate-45 transition-transform"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold">Renish Amipara</h4>
+                    <p class="text-gray-400">
+                        A passionate software developer with a keen interest in creating innovative solutions.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                        </li>
+                        <li>
+                            <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+                        </li>
+                        <li>
+                            <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
+                        </li>
+                        
+                    </ul>
+                    <h4 class="text-lg font-bold">Follow Me</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/renishamipara" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/renish-amipara" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/renishamipara" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/renish_amipara" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 100,
+            duration: 500,
+            easing: 'ease-in-sine',
+            delay: 100
+        });
+    </script>
+</body>
+</html>
+
+
