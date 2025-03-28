@@ -480,27 +480,26 @@
             </div>
         </div>
 
-        <!-- Mouse Scroll Indicator -->
-        <!-- <div class="fixed bottom-10 py-5">
+         <!-- Mouse Scroll Indicator -->
+         <div class="bottom-10 py-5">
             <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2">
-                <div class="flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300">
+                <div onclick="document.getElementById('resume').scrollIntoView({behavior: 'smooth'})" class="flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300 cursor-pointer">
                     <div
-                        class="w-4 sm:w-5 h-6 sm:h-8 border-2 border-gray-400 rounded-full p-1 hover:border-indigo-400 transition-colors duration-300">
+                        class="w-5 h-8 border-2 border-gray-400 rounded-full p-1 hover:border-indigo-400 transition-colors duration-300">
                         <div
-                            class="w-1 h-1.5 sm:h-2 bg-gray-400 rounded-full mx-auto animate-bounce hover:bg-indigo-400 transition-colors duration-300">
+                            class="w-1 h-2 bg-gray-400 rounded-full mx-auto animate-scroll hover:bg-indigo-400 transition-colors duration-300">
                         </div>
                     </div>
-                    <span
-                        class="text-xs sm:text-sm text-gray-400 hover:text-indigo-400 transition-colors duration-300">Scroll
+                    <span class="text-sm text-gray-400 hover:text-indigo-400 transition-colors duration-300">Scroll
                         Down</span>
                 </div>
             </div>
-        </div> -->
+        </div>
     </section>
 
     <!-- Resume Section -->
     <section
-        class=" bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+        class=" bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center" id="resume">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center py-8 sm:py-12 lg:py-16">
                 <h2 class="text-4xl sm:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">Resume</h2>
