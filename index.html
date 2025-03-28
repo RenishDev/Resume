@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
 <head>
     <meta charset="UTF-8">
@@ -164,7 +164,7 @@
                         class="text-sm sm:text-base text-white hover:text-indigo-400 transition-colors">Portfolio</a>
                     <a href="#contact"
                         class="text-sm sm:text-base text-white hover:text-indigo-400 transition-colors">Contact</a>
-                    <a href="RenishAmiparaResume.pdf" target="_blank"
+                    <a href="/RenishAmiparaResume.pdf" download
                         class="text-sm sm:text-base text-white hover:text-indigo-400 transition-colors">Download
                         Resume</a>
                 </div>
@@ -189,7 +189,7 @@
                         class="text-sm sm:text-base text-white hover:text-indigo-400 transition-colors text-center py-2">Portfolio</a>
                     <a href="#contact"
                         class="text-sm sm:text-base text-white hover:text-indigo-400 transition-colors text-center py-2">Contact</a>
-                    <a href="RenishAmiparaResume.pdf" target="_blank"
+                    <a href="/RenishAmiparaResume.pdf" download
                         class="text-sm sm:text-base text-white hover:text-indigo-400 transition-colors text-center py-2">Resume</a>
                 </div>
             </div>
@@ -2152,7 +2152,40 @@
                 }
             }
         </script>
-    
+<script>
+    // Disable inspect element
+    document.addEventListener('keydown', function(e) {
+        // Prevent F12 key
+        if(e.keyCode == 123) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Prevent Ctrl+Shift+I (Chrome, Firefox, Safari)
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Prevent Ctrl+Shift+J (Chrome)
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Prevent Ctrl+Shift+C (Chrome)
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Prevent Ctrl+U (View source)
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
 </body>
 
 </html>
